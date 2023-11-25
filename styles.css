@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.main {
+  padding: 0 20px;
+}
+
+.deck-title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.deck {
+  border: 1px solid grey;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.deck .card {
+  border: 1px solid grey;
+  margin-bottom: 10px;
+  padding: 5px 7px 8px;
+}
+
+.deck-tit {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.card-tit {
+  font-size: 16px;
+}
+
+.card-quest {
+  margin-bottom: 7px;
+}
+
+.remove-card {
+  cursor: pointer;
+  padding: 2px 5px;
+  background: #ff5f5f7d;
+  border: none;
+  font-size: 12px;
+}
