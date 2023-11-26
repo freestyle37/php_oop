@@ -106,7 +106,12 @@ document.addEventListener("click", event => {
 });
 
 document.addEventListener('submit', event => {
-  event.preventDefault();
+  
+  let deck_id_from = event.target.querySelector('select[name="deck_select"]');
+  if(deck_id_from) {
+    event.preventDefault();
+  }
+  
   let deck_id_from_option = event.target.querySelector('select[name="deck_select"]').value;
 
   const decks = document.querySelectorAll('.deck-rem');

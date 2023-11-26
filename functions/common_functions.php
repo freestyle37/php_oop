@@ -8,6 +8,62 @@ function vd($data) {
   echo "</pre>";
 }
 
+function dancingWithTambourine($text) {
+  $test = preg_split('//u',$text,-1,PREG_SPLIT_NO_EMPTY);
+  $sl = "\\";
+  $test_len = count($test);
+  foreach($test as $key => $val) {
+    if(($val === $sl) && ($key+1 !== $test_len) && ($test[$key+1] === 'n')) {
+      $test[$key] = 'line_break_dpk';
+      unset($test[$key+1]);
+    }
+    if($val === ' ') {
+      $test[$key] = 'space_dpk';
+    }
+  }
+
+  $i = 0;
+  $s;
+  foreach($test as $k => $v) {
+    if ($i === 2) {
+      if( $v!=='line_break_dpk' && $v!=='space_dpk') {
+        $i = 0;
+      } else continue;
+    }
+    if($i === 0) {
+      $s = $k;
+      $i = 1;
+      continue;
+    }
+    if($i!==0) {
+      if( $v!=='line_break_dpk' && $v!=='space_dpk') {
+        $i=1;
+        $test[$s] .= $v;
+        unset($test[$k]);
+      } else {
+        $i = 2;
+        continue;
+      }
+    }
+  }
+  //vd($test);
+
+  $str = '';
+  foreach($test as $ky => $vl) {
+    if($vl === 'line_break_dpk') {
+      $str .= '<br>';
+    }
+    if($vl === 'space_dpk') {
+      $str .= '<span class="space_dpk"></span>';
+    }
+    if($vl !== 'line_break_dpk' && $vl !== 'space_dpk') {
+      $str .= $vl;
+    }
+
+  }
+  return $str;
+}
+
 function createListOfOptionTagFromArr($arr) {
   $list_of_option = '';
   foreach($arr as $key => $val) {
@@ -120,11 +176,12 @@ function displayListOfCards_2($prepared_arr_of_cards) {
     echo '<div class="deck deck-rem" data-display_status="hide" data-deck_id="'. $val .'">
     <h4 class="deck-tit">'. $key .'</h4>';
     foreach($prepared_arr_of_cards as $k => $v) {
+      $res = dancingWithTambourine($v[3]);
       if($val === $v[4]) {
         echo '<div class="card" data-card_id="'. $v[0] .'" data-display_status="hide">'. 
         '<h5 class="card-tit">'. $v[1] .'</h5>' . 
         '<div class="card-quest">'. $v[2] .'</div>' . 
-        '<div class="card-answ" data-display_status="hide">'. $v[3] .'</div>' .
+        '<div class="card-answ" data-display_status="hide">'. $res .'</div>' .
         '<button class="show-answer-but" type="button">show answer</button>'
         .'</div>';
       }

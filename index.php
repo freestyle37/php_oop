@@ -21,6 +21,7 @@
     <div><a href="./create_new_scope.php" target="_blank">create new scope</a></div>
     <div><a href="./create_new_deck.php" target="_blank">create new deck</a></div>
     <div><a href="./create_new_card.php" target="_blank">create new card</a></div>
+    <div><a href="./remember.php" target="_blank">remember</a></div>
 
     <?php 
       $res = returnCardArr('./files/cards.csv', './files/decks.csv');

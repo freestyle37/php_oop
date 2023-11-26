@@ -5,7 +5,10 @@
 }
 
 .main {
+  width: 700px;
+  max-width: 100%;
   padding: 0 20px;
+  margin: 0 auto;
 }
 
 .deck-title {
@@ -78,6 +81,11 @@
 
 .card-answ {
   margin-bottom: 10px;
+  background: #c9ddc9;
+  padding: 20px;
+  color: #0c0d0e;
+  font-family: "Roboto Mono", sans-serif;
+  line-height: 1.4;
 }
 
 .card-answ[data-display_status="hide"], .deck-rem[data-display_status="hide"], .card[data-display_status="hide"] {
@@ -85,4 +93,24 @@
 }
 .card-answ[data-display_status="show"], .deck-rem[data-display_status="show"], .card[data-display_status="show"] {
   display: block;
+}
+
+.space_dpk {
+  display: inline-block;
+  width: 7px;
+  height: 10px;
+  position: relative;
+}
+.space_dpk::before {
+  position: absolute;
+  z-index: 2;
+  content: '';
+  display: inline-block;
+  width: 2px;
+  height: 2px;
+  background-color: #85858599;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
