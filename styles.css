@@ -27,7 +27,7 @@
 .deck .card {
   border: 1px solid grey;
   margin-bottom: 10px;
-  padding: 5px 7px 8px;
+  padding: 5px 10px 8px;
 }
 
 .deck-tit {
@@ -42,7 +42,10 @@
 }
 
 .card-quest {
-  margin-bottom: 9px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: #282828;
+  color: #7a7a7a;
 }
 
 .remove-card {
@@ -98,8 +101,6 @@
 
 .space_dpk {
   display: inline-block;
-  width: 7px;
-  height: 10px;
   position: relative;
 }
 .space_dpk::before {
@@ -109,9 +110,15 @@
   display: inline-block;
   width: 2px;
   height: 2px;
-  background-color: #85858599;
   border-radius: 50%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+.card-answ .space_dpk::before {
+  background-color: #85858599;
+}
+
+form [name="create_new_card_form"] {
+  padding: 10px;
 }

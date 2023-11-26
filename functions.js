@@ -44,7 +44,7 @@ function createNextCardBut() {
   let button = document.createElement("button");
   button.setAttribute("type", "button");
   button.setAttribute("class", "next_card_but");
-  button.innerText = "next";
+  button.innerText = "next >";
 
   return button;
 }
@@ -111,7 +111,7 @@ document.addEventListener('submit', event => {
   if(deck_id_from) {
     event.preventDefault();
   }
-  
+
   let deck_id_from_option = event.target.querySelector('select[name="deck_select"]').value;
 
   const decks = document.querySelectorAll('.deck-rem');

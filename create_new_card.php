@@ -28,7 +28,7 @@
   
 ?>
 
-<form action="./actions/create_new_card_action.php" method="post" name="create_new_card_form">
+<form action="./actions/create_new_card_action.php" method="post" name="create_new_card_form" style="padding: 10px;">
     <h3>Create new card:</h3>
 
     <div style="margin-bottom: 20px;">
@@ -38,7 +38,7 @@
 
     <div style="margin-bottom: 20px;">
       <div><label for="question">Question:</label></div>
-      <textarea required id="question" name="question" rows="3" cols="50"></textarea>
+      <textarea required id="question" name="question" rows="5" cols="50"></textarea>
     </div>
 
     <div style="margin-bottom: 20px;">
@@ -47,7 +47,7 @@
     </div>
 
     <div style="margin-bottom: 20px;">
-      <label for="deck_id">Choose a deck:</label>
+      <label for="decks_select">Choose a deck:</label>
 
       <select name="deck_id" id="decks_select" required>
         <?php

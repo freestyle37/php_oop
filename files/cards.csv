@@ -1,2 +1,5 @@
 id;title;question;answer;deck_id;status
-1;Экземпляр класса;Создать экземпляр класса ShopProduct;"new ShopProduct();";1;red
+3;Целочисленный идентификатор объекта;Получить целочисленный идентификатор объекта $object;"spl_object_id($object);";1;red
+4;Первая работа с объектом;"класс ShopProduct\npublic св-ва: title(Стандартный товар), price(0)\nсоздать экземпляр класса\nвывести св-во title\nпереопределить title на ""Собачье сердце""\nдинамически добавить св-во: arbitraryAddition со значением: ""Дополнительный параметр""";"class ShopProduct\n{\n  public $title = ""Стандартный товар"";\n  public $price = 0;\n}\n\n$product1 = new ShopProduct();\n\necho $product1->title;\n\n$product1->title = ""Собачье сердце"";\n\n$product1->arbitraryAddition = ""Дополнительный параметр"";";1;red
+5;ewewew;ewewewewewew;"class  ShopProduct\n{\n    public  $title                     =  ""Стандартный  товар"";\n    public  $price                   =  0;\n    public  $title                     =  ""Стандартный  товар"";\n    public  $priceddddddddf  =  0;\n}";1;red
+6;errere;reerere;"class ShopProduct\n{\n  public $title                = ""Стандартный товар"";\n  public $price                = 0;\n  public $titleretetretet      = ""Стандартный товар"";\n  public $titleretet_dfH_retet = ""Стандартный товар"";\n}";1;red

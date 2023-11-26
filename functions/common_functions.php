@@ -8,7 +8,9 @@ function vd($data) {
   echo "</pre>";
 }
 
-function dancingWithTambourine($text) {
+function dancingWithTambourine($text, $n_of_nbsp = 1) {
+  $nbsp = '&nbsp;';
+  if ($n_of_nbsp === 2) $nbsp = '&nbsp;&nbsp;';
   $test = preg_split('//u',$text,-1,PREG_SPLIT_NO_EMPTY);
   $sl = "\\";
   $test_len = count($test);
@@ -54,7 +56,7 @@ function dancingWithTambourine($text) {
       $str .= '<br>';
     }
     if($vl === 'space_dpk') {
-      $str .= '<span class="space_dpk"></span>';
+      $str .= '<span class="space_dpk">'. $nbsp .'</span>';
     }
     if($vl !== 'line_break_dpk' && $vl !== 'space_dpk') {
       $str .= $vl;
@@ -154,9 +156,10 @@ function displayListOfCards($prepared_arr_of_cards) {
     <h4 class="deck-tit">'. $key .'</h4>';
     foreach($prepared_arr_of_cards as $k => $v) {
       if($val === $v[4]) {
+        $resq = dancingWithTambourine($v[2]);
         echo '<div class="card" data-card_id="'. $v[0] .'">'. 
         '<h5 class="card-tit">'. $v[1] .'</h5>' . 
-        '<div class="card-quest">'. $v[2] .'</div>' . 
+        '<div class="card-quest">'. $resq .'</div>' . 
         '<button class="remove-card" type="button">remove</button>'
         .'</div>';
       }
@@ -176,11 +179,12 @@ function displayListOfCards_2($prepared_arr_of_cards) {
     echo '<div class="deck deck-rem" data-display_status="hide" data-deck_id="'. $val .'">
     <h4 class="deck-tit">'. $key .'</h4>';
     foreach($prepared_arr_of_cards as $k => $v) {
-      $res = dancingWithTambourine($v[3]);
+      $res = dancingWithTambourine($v[3], 2);
+      $quest = dancingWithTambourine($v[2]);
       if($val === $v[4]) {
         echo '<div class="card" data-card_id="'. $v[0] .'" data-display_status="hide">'. 
         '<h5 class="card-tit">'. $v[1] .'</h5>' . 
-        '<div class="card-quest">'. $v[2] .'</div>' . 
+        '<div class="card-quest">'. $quest .'</div>' . 
         '<div class="card-answ" data-display_status="hide">'. $res .'</div>' .
         '<button class="show-answer-but" type="button">show answer</button>'
         .'</div>';
