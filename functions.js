@@ -1,4 +1,5 @@
 "use strict";
+let dpk;
 function ajax_req(info, card) {
   // 1. Создаём новый XMLHttpRequest-объект
   let xhr = new XMLHttpRequest();
@@ -33,8 +34,38 @@ function ajax_req(info, card) {
   };
 }
 
+function randomInteger(min, max) {
+  let rand = min - 0.5 + Math.random() * (max - min + 1);
+  return Math.round(rand);
+}
+
+function card_selection(cards) {
+  let ids_arr = [];
+
+  cards.forEach(function(element) {
+    ids_arr.push(+element.dataset.card_id);
+  });
+
+  //console.log(ids_arr);
+  let rand_card_id = ids_arr[randomInteger(0, ids_arr.length-1)];
+
+  cards.forEach(function(element) {
+    if(+element.dataset.card_id === +rand_card_id) {
+      console.log('e');
+      element.dataset.display_status = 'show';
+    }
+  });
+
+  console.log();
+}
+
 document.addEventListener("DOMContentLoaded", function() {
-  console.log("hi");
+  /*
+  const button = document.querySelector('#choose_deck_f_but');
+  button.addEventListener('click', function (event) {
+    console.log(event.target);
+  })
+  */
 });
 
 document.addEventListener("click", event => {
@@ -52,3 +83,42 @@ document.addEventListener("click", event => {
 
 });
 
+document.addEventListener('submit', event => {
+  event.preventDefault();
+  let deck_id_from_option = event.target.querySelector('select[name="deck_select"]').value;
+
+  const decks = document.querySelectorAll('.deck-rem');
+  decks.forEach(function(element) {
+    element.dataset.display_status = 'hide';
+  });
+
+  decks.forEach(function(element) {
+    //console.log(element.dataset.deck_id);
+    if(+deck_id_from_option === +element.dataset.deck_id) {
+      element.dataset.display_status = 'show';
+    }
+  });
+
+  event.target.closest('form').remove();
+
+  const cards = document.querySelectorAll('.deck-rem[data-display_status="show"] .card');
+  card_selection(cards);
+});
+
+
+document.addEventListener("click", event => {
+
+  const show_answer_but = event.target.closest('.show-answer-but');
+
+  if (show_answer_but) {
+    let card = show_answer_but.closest('.card').querySelector('.card-answ');
+
+    if (card) {
+      if (card.dataset.display_status === 'hide') {
+        card.dataset.display_status = 'show';
+      }
+    }
+    show_answer_but.remove();
+  }
+
+});

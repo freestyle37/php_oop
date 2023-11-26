@@ -18,6 +18,14 @@ function createListOfOptionTagFromArr($arr) {
   return $list_of_option;
 }
 
+function createListOfOptionTagFromArr_2($arr) {
+  $list_of_option = '';
+  foreach($arr as $key => $val) {
+    $list_of_option .= '<option value="'. $val .'">'. $key .'</option>';
+  }
+  return $list_of_option;
+}
+
 function returnCardArr($card_csv_file_path, $deck_csv_file_path) {
   $parse_csv_card_arr = [];
   $parse_csv_deck_arr = [];
@@ -94,6 +102,30 @@ function displayListOfCards($prepared_arr_of_cards) {
         '<h5 class="card-tit">'. $v[1] .'</h5>' . 
         '<div class="card-quest">'. $v[2] .'</div>' . 
         '<button class="remove-card" type="button">remove</button>'
+        .'</div>';
+      }
+    }
+    echo '</div>';
+  }
+}
+
+function displayListOfCards_2($prepared_arr_of_cards) {
+  //vd($prepared_arr_of_cards);
+  $deck_ar = $prepared_arr_of_cards[0];
+
+  unset($prepared_arr_of_cards[0]);
+  unset($prepared_arr_of_cards[1]);
+
+  foreach($deck_ar as $key => $val) {
+    echo '<div class="deck deck-rem" data-display_status="hide" data-deck_id="'. $val .'">
+    <h4 class="deck-tit">'. $key .'</h4>';
+    foreach($prepared_arr_of_cards as $k => $v) {
+      if($val === $v[4]) {
+        echo '<div class="card" data-card_id="'. $v[0] .'" data-display_status="hide">'. 
+        '<h5 class="card-tit">'. $v[1] .'</h5>' . 
+        '<div class="card-quest">'. $v[2] .'</div>' . 
+        '<div class="card-answ" data-display_status="hide">'. $v[3] .'</div>' .
+        '<button class="show-answer-but" type="button">show answer</button>'
         .'</div>';
       }
     }

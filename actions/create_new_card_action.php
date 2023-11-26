@@ -30,3 +30,5 @@ array_unshift($post_arr, $card_id);
 array_push($arr_for_written_to_file, $post_arr);
 
 kama_create_csv_file( $arr_for_written_to_file, $card_csv_file_path );
+
+echo '<div><a href="../create_new_card.php">create new card</a></div>';

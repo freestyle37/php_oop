@@ -50,7 +50,7 @@
       <label for="deck_id">Choose a deck:</label>
 
       <select name="deck_id" id="decks_select" required>
-        <?php 
+        <?php
           if (isset($parse_csv_deck)) {
             $option_list = createListOfOptionTagFromArr($parse_csv_deck);
             echo $option_list;
