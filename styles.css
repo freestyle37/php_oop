@@ -68,7 +68,7 @@
   font-size: 12px;
 }
 
-.show-answer-but {
+.show-answer-but, .next_card_but {
   border: none;
   background-color: #727272ad;
   cursor: pointer;

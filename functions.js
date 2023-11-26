@@ -1,5 +1,6 @@
 "use strict";
 let dpk;
+
 function ajax_req(info, card) {
   // 1. Создаём новый XMLHttpRequest-объект
   let xhr = new XMLHttpRequest();
@@ -39,8 +40,31 @@ function randomInteger(min, max) {
   return Math.round(rand);
 }
 
+function createNextCardBut() {
+  let button = document.createElement("button");
+  button.setAttribute("type", "button");
+  button.setAttribute("class", "next_card_but");
+  button.innerText = "next";
+
+  return button;
+}
+
+function createMessage(message) {
+  let mes = document.createElement("div");
+  mes.setAttribute("class", "message");
+  mes.innerText = message;
+
+  return mes;
+}
+
 function card_selection(cards) {
   let ids_arr = [];
+
+  if(cards.length === 0) {
+    let deck = document.querySelector('.deck-rem[data-display_status="show"]');
+    let mes = createMessage('out of cards');
+    deck.append(mes);
+  }
 
   cards.forEach(function(element) {
     ids_arr.push(+element.dataset.card_id);
@@ -51,12 +75,10 @@ function card_selection(cards) {
 
   cards.forEach(function(element) {
     if(+element.dataset.card_id === +rand_card_id) {
-      console.log('e');
       element.dataset.display_status = 'show';
     }
   });
 
-  console.log();
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -118,7 +140,25 @@ document.addEventListener("click", event => {
         card.dataset.display_status = 'show';
       }
     }
-    show_answer_but.remove();
-  }
+    
 
+    let next_card_but = createNextCardBut();
+    let par_cont_of_but = show_answer_but.closest('.card');
+    //console.log(par_cont_of_but);
+
+    show_answer_but.remove();
+    par_cont_of_but.append(next_card_but);
+  }
+  
+});
+
+document.addEventListener("click", event => {
+  const next_card_but = event.target.closest('.next_card_but');
+
+  if(next_card_but) {
+    next_card_but.closest('.card').remove();
+
+    const cards = document.querySelectorAll('.deck-rem[data-display_status="show"] .card');
+    card_selection(cards);
+  }
 });
