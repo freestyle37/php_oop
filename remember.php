@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Roboto Mono">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Roboto Mono">
     <link rel="icon" href="favicon.ico">
     <script src="./functions.js" charset="utf-8"></script>
     <title>remember</title>

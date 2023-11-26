@@ -4,7 +4,8 @@ define("BOILERPLATE_ARR_FOR_CARDS", [[
   'title',
   'question',
   'answer',
-  'deck_id'
+  'deck_id',
+  'status'
 ]]);
 
 define("BOILERPLATE_ARR_FOR_SCOPES", [[

@@ -1,3 +1,2 @@
-id;title;question;answer;deck_id
-1;Создать класс;Создать класс ShopProduct;class ShopProduct\n{\n  // Тело класса\n};1
-2;eroiuoure;c;"document.addEventListener(""DOMContentLoaded"", function() {\n\n  const tic_tac_toe = document.querySelector('.tic-tac-toe');\n\n  tic_tac_toe.addEventListener('click', function(event) {\n    let cell = event.target.closest('.tic-tac-toe__item');\n\n    if(cell) {\n      if (cell.textContent === 'emoji1') {\n        cell.setAttribute('data-value', 'emoji2');\n        cell.textContent = 'emoji2';\n      } else if (cell.textContent === 'emoji2') {\n        cell.setAttribute('data-value', 'emoji3');\n        cell.textContent = 'emoji3';\n      }\n    }\n\n  });\n\n});";1
+id;title;question;answer;deck_id;status
+1;Экземпляр класса;Создать экземпляр класса ShopProduct;"new ShopProduct();";1;red
